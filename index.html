@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <head>
+      <h1>Titulo</h1>
+    </head>
+    <main>
+      <div class="container">
+        <h2>Inscripcion</h2>
+        <form action="index.html">
+            <div class="camposJuntos">
+                <label for="nombre">Nombre</label>
+                <input type="text" id="nombre" name="nombre" />
+                <small id="msgNombre"></small>
+
+                <label for="apellido">Apellido</label>
+                <input type="text" id="apellido" name="apellido" />
+                <small id="msgApellido"></small>
+            </div>
+          
+
+          <label for="dni">DNI</label>
+          <input type="text" id="dni" name="dni" />
+          <small id="msgDni"></small>
+
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" />
+          <small id="msgEmail"></small>
+
+          <label for="telefono">Telefono</label>
+          <input type="tel" id="telefono" name="telefono" />
+          <small id="msgTelefono"></small>
+
+          <label for="numEntradas">Numero de entradas</label>
+          <input type="number" id="numEntradas" name="numEntradas" />
+          <small id="msgNumEntradas"></small>
+
+          <label for="tipoEntrada">Tipo de entrada</label>
+          <select name="tipoEntrada" id="tipoEntrada">
+            <option value="">Seleccione tipo de entrada</option>
+            <option value="general">General</option>
+            <option value="vip">VIP</option>
+            <option value="vvip">VVIP</option>
+          </select>
+          <small id="msgTipoEntrada"></small>
+
+          <label for="adiciones">Adicionales:</label>
+          <label for="bebida">Bebida</label>
+          <input type="checkbox" id="bebida" name="bebida" />
+          <label for="comida">Comida</label>
+          <input type="checkbox" id="comida" name="comida" />
+          <label for="brazalete">Brazalete exclusivo</label>
+          <input type="checkbox" id="brazalete" name="brazalete" />
+          <small id="msgAdicionales"></small>
+
+          <label for="tyc">Acepto los terminos y condiciones</label>
+          <input type="checkbox" id="tyc" name="tyc" />
+          <small id="msgTyc"></small>
+
+          <label for="comentario">Comentario</label>
+          <textarea name="comentario" id="comentario" rows="5"></textarea>
+          <small id="msgComentario"></small>
+
+          <button id="previsualizar">Previsualizar</button>
+          <button type="submit" id="enviar">Enviar</button>
+          <button type="reset" id="limpiar">Limpiar</button>
+          <button id="recargar"> Recargar</button>
+        </form>
+
+      </div>
+
+      <!-- Crear elemento del DOM-->
+    </main>
+    <footer>
+      <h4>Pie de pagina</h4>
+      <script src="app.js"></script>
+    </footer>
+  </body>
+</html>
