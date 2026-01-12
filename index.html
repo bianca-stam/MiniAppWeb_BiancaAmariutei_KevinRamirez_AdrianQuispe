@@ -13,33 +13,30 @@
     <main>
       <div class="container">
         <h2>Inscripcion</h2>
-        <form action="index.html">
-            <div class="camposJuntos">
-                <label for="nombre">Nombre</label>
-                <input type="text" id="nombre" name="nombre" />
-                <small id="msgNombre"></small>
+        <form id="formulario" action="index.html">
+          <label for="nombre">Nombre</label>
+          <input type="text" id="nombre" name="nombre" />
+          <small id="msgNombre" class="valido"></small>
 
-                <label for="apellido">Apellido</label>
-                <input type="text" id="apellido" name="apellido" />
-                <small id="msgApellido"></small>
-            </div>
-          
+          <label for="apellido">Apellidos</label>
+          <input type="text" id="apellido" name="apellido" />
+          <small id="msgApellido" class="valido"></small>
 
           <label for="dni">DNI</label>
           <input type="text" id="dni" name="dni" />
-          <small id="msgDni"></small>
-
-          <label for="email">Email</label>
-          <input type="email" id="email" name="email" />
-          <small id="msgEmail"></small>
+          <small id="msgDni" class="valido"></small>
 
           <label for="telefono">Telefono</label>
           <input type="tel" id="telefono" name="telefono" />
-          <small id="msgTelefono"></small>
+          <small id="msgTelefono" class="valido"></small>
+
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" />
+          <small id="msgEmail" class="valido"></small>
 
           <label for="numEntradas">Numero de entradas</label>
           <input type="number" id="numEntradas" name="numEntradas" />
-          <small id="msgNumEntradas"></small>
+          <small id="msgNumEntradas" class="valido"></small>
 
           <label for="tipoEntrada">Tipo de entrada</label>
           <select name="tipoEntrada" id="tipoEntrada">
@@ -48,32 +45,42 @@
             <option value="vip">VIP</option>
             <option value="vvip">VVIP</option>
           </select>
-          <small id="msgTipoEntrada"></small>
+          <small id="msgTipoEntrada" class="valido"></small>
 
           <label for="adiciones">Adicionales:</label>
-          <label for="bebida">Bebida</label>
-          <input type="checkbox" id="bebida" name="bebida" />
-          <label for="comida">Comida</label>
-          <input type="checkbox" id="comida" name="comida" />
-          <label for="brazalete">Brazalete exclusivo</label>
-          <input type="checkbox" id="brazalete" name="brazalete" />
-          <small id="msgAdicionales"></small>
+          <div class="camposJuntos">
+            <input type="checkbox" id="bebida" name="bebida" />
+            <label for="bebida">Bebida</label>
+          </div>
 
-          <label for="tyc">Acepto los terminos y condiciones</label>
-          <input type="checkbox" id="tyc" name="tyc" />
-          <small id="msgTyc"></small>
+          <div class="camposJuntos">
+            <input type="checkbox" id="comida" name="comida" />
+            <label for="comida">Comida</label>
+          </div>
+
+          <div class="camposJuntos">
+            <input type="checkbox" id="brazalete" name="brazalete" />
+            <label for="brazalete">Brazalete exclusivo</label>
+          </div>
+          <small id="msgAdicionales"></small>
 
           <label for="comentario">Comentario</label>
           <textarea name="comentario" id="comentario" rows="5"></textarea>
           <small id="msgComentario"></small>
 
-          <button id="previsualizar">Previsualizar</button>
+          <div class="camposJuntos">
+            <input type="checkbox" id="tyc" name="tyc" />
+            <label for="tyc">Acepto los terminos y condiciones</label>
+          </div>
+          <small id="msgTyc" class="valido"></small>
+
+          <button type="button" id="previsualizar">Previsualizar</button>
           <button type="submit" id="enviar">Enviar</button>
           <button type="reset" id="limpiar">Limpiar</button>
-          <button id="recargar"> Recargar</button>
+          <button type="button" id="recargar">Recargar</button>
         </form>
-
       </div>
+      <div class="previsualizacion"></div>
 
       <!-- Crear elemento del DOM-->
     </main>

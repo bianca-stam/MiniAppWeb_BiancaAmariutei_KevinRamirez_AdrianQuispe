@@ -3,6 +3,7 @@ body{
     display: grid;
     grid-template-rows: auto 1fr auto;
     margin: 0;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 h1{
@@ -11,18 +12,17 @@ h1{
 }
 
 main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+}
+.container{
     margin: 20px;
     padding: 20px;
     width: 70%;
     background-color: white;
     border-radius: 10px;
-}
-
-.camposJuntos{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 20px;
 }
 
 form{
@@ -32,12 +32,41 @@ form{
 
 input, textarea, select{
     width: 100%;
-    margin-bottom: 15px;
-    padding: 10px;
+    padding: 10px 7px; 
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 16px;
 }
+
+small{
+    height: 15px;
+    margin: 7px 0;
+}
+
+.valido{
+    color: green;
+}
+
+.invalido{
+    color: red;
+}
+
+input[type="checkbox"]{
+    margin: 0;
+}
+
+label{
+    margin: 8px 0;
+}
+
+
+.camposJuntos{
+    display: grid;
+    grid-template-columns: 20px 1fr;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
 
 footer{
     text-align: center;
@@ -55,7 +84,7 @@ button{
     border: none;
     border-radius: 5px;
     cursor: pointer;
-        transition: 500ms;
+    transition: 500ms;
 
 }
 
