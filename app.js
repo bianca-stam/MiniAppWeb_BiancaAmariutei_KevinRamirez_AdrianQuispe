@@ -1,4 +1,5 @@
 var formulario = document.getElementById("formulario");
+var bandera = true;
 
 //inputs de texto
 var nombre = document.getElementById("nombre");
@@ -25,10 +26,11 @@ var comentario = document.getElementById("comentario");
 var previsualizarBtn = document.getElementById("previsualizar");
 var btnEnviar = document.getElementById("enviar");
 var btnLimpiar = document.getElementById("limpiar");
+var btnRecuperarLS = document.getElementById("recuperarLS");
 var btnRecargar = document.getElementById("recargar");
 
 //elemento del DOM donde se mostrará la previsualización
-var previsualizacionDiv = document.querySelector(".previsualizacion");
+var previsualizacionDiv = document.getElementById("previsualizacion");
 
 //mensajes de error
 var msgNombre = document.getElementById("msgNombre");
@@ -60,14 +62,90 @@ formulario.addEventListener("submit", (event) => {
     if (listaInvalidos.length > 0) {
         event.preventDefault(); 
         alert("No se puede enviar el formulario. Los siguientes campos son inválidos: \n - " + listaInvalidos.join("\n - "));
+    } else{
+        const datosFormulario = {
+            nombre: nombre.value,
+            apellido: apellido.value,
+            dni: dni.value,
+            telefono: telefono.value,
+            email: email.value,
+            entradas: numEntradas.value,
+            tipo: tipoEntrada.value,
+            adicionales: {
+                bebida: bebida.checked,
+                comida: comida.checked,
+                brazalete: brazalete.checked
+            },
+            comentario: comentario.value
+        };
+
+        localStorage.setItem("formulario", JSON.stringify(datosFormulario));
     }
 });
 btnLimpiar.addEventListener("click", limpiarFormulario);
+btnRecuperarLS.addEventListener("click", recuperarDelLocalStorage);
 btnRecargar.addEventListener("click", recargarPagina);
 
 //Funciones de los botones
 function previsualizar(event) {
     //Lógica para previsualizar los datos del formulario
+    if (bandera) {
+        previsualizarBtn.textContent = "Quitar Previsualización";
+        var div = document.createElement("div");
+        div.id = "datosPrevisualizados";
+
+        var titulo = document.createElement("h2");
+        titulo.textContent = "Previsualización de Datos";
+
+        var contenido = document.createElement("p");
+        contenido.innerHTML = `
+            <strong>Nombre:</strong> ${nombre.value} <br>
+            <strong>Apellido:</strong> ${apellido.value} <br>
+            <strong>DNI:</strong> ${dni.value} <br>
+            <strong>Teléfono:</strong> ${telefono.value} <br>
+            <strong>Email:</strong> ${email.value} <br>
+            <strong>Número de Entradas:</strong> ${numEntradas.value} <br>
+            <strong>Tipo de Entrada:</strong> ${tipoEntrada.value} <br>
+            <strong>Adicionales:</strong> 
+                ${bebida.checked ? "Bebida " : ""} 
+                ${comida.checked ? "Comida " : ""} 
+                ${brazalete.checked ? "Brazalete " : ""} <br>
+            <strong>Comentario:</strong> ${comentario.value} <br>
+        `;
+
+        div.appendChild(titulo);
+        div.appendChild(contenido);
+        
+        previsualizacionDiv.innerHTML = "";
+        previsualizacionDiv.appendChild(div);
+        bandera = false;
+    } else {
+        previsualizarBtn.textContent = "Previsualizar";
+        previsualizacionDiv.innerHTML = "";
+        bandera = true;
+    }
+
+}
+
+function recuperarDelLocalStorage(event) {
+    const datosGuardados = localStorage.getItem("formulario");
+    if (datosGuardados) {
+        const datosFormulario = JSON.parse(datosGuardados);
+
+        nombre.value = datosFormulario.nombre;
+        apellido.value = datosFormulario.apellido;
+        dni.value = datosFormulario.dni;
+        telefono.value = datosFormulario.telefono;
+        email.value = datosFormulario.email;
+        numEntradas.value = datosFormulario.entradas;
+        tipoEntrada.value = datosFormulario.tipo;
+        bebida.checked = datosFormulario.adicionales.bebida;
+        comida.checked = datosFormulario.adicionales.comida;
+        brazalete.checked = datosFormulario.adicionales.brazalete;
+        comentario.value = datosFormulario.comentario;
+    } else {
+        alert("No hay datos guardados en localStorage");
+    }
 }
 
 function limpiarFormulario(event) {
