@@ -1,5 +1,5 @@
 body{
-    background-image: url(imagen.png);
+    background-image: url(recursos/imagenes/backgroundMain.png);
     background-color: orange;
     display: grid;
     grid-template-rows: auto 1fr auto;
