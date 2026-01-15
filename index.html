@@ -3,92 +3,106 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Registro del Evento</title>
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <head>
-      <h1>Kevin es gay</h1>
-    </head>
+      <h1>Registro del Evento</h1>
     <main>
       <div class="container">
         <h2>Inscripcion</h2>
-        <form id="formulario" action="index.html">
-          <label for="nombre">Nombre</label>
-          <input type="text" id="nombre" name="nombre" />
-          <small id="msgNombre" class="valido"></small>
 
-          <label for="apellido">Apellidos</label>
-          <input type="text" id="apellido" name="apellido" />
-          <small id="msgApellido" class="valido"></small>
+        
+        <div class="cont-formulario">
+          <form id="formulario" action="index.html">
+            
+              
+              <label for="nombre">Nombre</label>
+              <input type="text" id="nombre" name="nombre" />
+              <small id="msgNombre" class="valido"></small>
 
-          <label for="dni">DNI</label>
-          <input type="text" id="dni" name="dni" />
-          <small id="msgDni" class="valido"></small>
+              <label for="apellido">Apellidos</label>
+              <input type="text" id="apellido" name="apellido" />
+              <small id="msgApellido" class="valido"></small>
 
-          <label for="telefono">Telefono</label>
-          <input type="tel" id="telefono" name="telefono" />
-          <small id="msgTelefono" class="valido"></small>
+              <label for="dni">DNI</label>
+              <input type="text" id="dni" name="dni" />
+              <small id="msgDni" class="valido"></small>
 
-          <label for="email">Email</label>
-          <input type="email" id="email" name="email" />
-          <small id="msgEmail" class="valido"></small>
+              <label for="telefono">Telefono</label>
+              <input type="tel" id="telefono" name="telefono" />
+              <small id="msgTelefono" class="valido"></small>
 
-          <label for="numEntradas">Numero de entradas</label>
-          <input type="number" id="numEntradas" name="numEntradas" />
-          <small id="msgNumEntradas" class="valido"></small>
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" />
+              <small id="msgEmail" class="valido"></small>
 
-          <label for="tipoEntrada">Tipo de entrada</label>
-          <select name="tipoEntrada" id="tipoEntrada">
-            <option value="">Seleccione tipo de entrada</option>
-            <option value="general">General</option>
-            <option value="vip">VIP</option>
-            <option value="vvip">VVIP</option>
-          </select>
-          <small id="msgTipoEntrada" class="valido"></small>
+              <label for="numEntradas">Numero de entradas</label>
+              <input type="number" id="numEntradas" name="numEntradas" />
+              <small id="msgNumEntradas" class="valido"></small>
 
-          <label for="adiciones">Adicionales:</label>
-          <div class="camposJuntos">
-            <input type="checkbox" id="bebida" name="bebida" />
-            <label for="bebida">Bebida</label>
-          </div>
+              <label for="tipoEntrada">Tipo de entrada</label>
+              <select name="tipoEntrada" id="tipoEntrada">
+                <option value="">Seleccione tipo de entrada</option>
+                <option value="general">General</option>
+                <option value="vip">VIP</option>
+                <option value="vvip">VVIP</option>
+              </select>
+              <small id="msgTipoEntrada" class="valido"></small>
 
-          <div class="camposJuntos">
-            <input type="checkbox" id="comida" name="comida" />
-            <label for="comida">Comida</label>
-          </div>
+              <label for="adiciones">Adicionales:</label>
+              <div class="camposJuntos">
+                <input type="checkbox" id="bebida" name="bebida" />
+                <label for="bebida">Bebida</label>
+              </div>
 
-          <div class="camposJuntos">
-            <input type="checkbox" id="brazalete" name="brazalete" />
-            <label for="brazalete">Brazalete exclusivo</label>
-          </div>
-          <small id="msgAdicionales"></small>
+              <div class="camposJuntos">
+                <input type="checkbox" id="comida" name="comida" />
+                <label for="comida">Comida</label>
+              </div>
 
-          <label for="comentario">Comentario</label>
-          <textarea name="comentario" id="comentario" rows="5"></textarea>
-          <small id="msgComentario"></small>
+              <div class="camposJuntos">
+                <input type="checkbox" id="brazalete" name="brazalete" />
+                <label for="brazalete">Brazalete exclusivo</label>
+              </div>
+              <small id="msgAdicionales"></small>
 
-          <div class="camposJuntos">
-            <input type="checkbox" id="tyc" name="tyc" />
-            <label for="tyc">Acepto los terminos y condiciones</label>
-          </div>
-          <small id="msgTyc" class="valido"></small>
+              <label for="comentario">Comentario</label>
+              <textarea name="comentario" id="comentario" rows="5"></textarea>
+              <small id="msgComentario"></small>
 
-          <button type="button" id="previsualizar">Previsualizar</button>
-          <button type="submit" id="enviar">Enviar</button>
-          <button type="reset" id="limpiar">Limpiar</button>
-          <button type="button" id="recuperarLS">Recuperar del LocalStorage</button>
-          <button type="button" id="recargar">Recargar</button>
-        </form>
+              <div class="camposJuntos">
+                <input type="checkbox" id="tyc" name="tyc" />
+                <label for="tyc">Acepto los terminos y condiciones</label>
+              </div>
+              <small id="msgTyc" class="valido"></small>
+
+              <div id="divBotones">
+
+                <button type="button" id="previsualizar">Previsualizar</button>
+                <button type="reset" id="limpiar">Limpiar</button>
+                <button type="button" id="recuperarLS">Recuperar del LocalStorage</button>
+                <button type="button" id="recargar">Recargar</button>
+                <button type="submit" id="enviar">Enviar</button>
+
+              </div>
+           
+          </form>
+
+ </div>
       </div>
+
+      
       <div id="previsualizacion">
 
       </div>
+    </div>
 
       <!-- Crear elemento del DOM-->
     </main>
     <footer>
-      <h4>Pie de pagina</h4>
+      <h4>Trabajo realizado por Bianca S. Amariutei, Kevin Ramirez y Adrian Quispe.</h4>
+      <p>DAM2 - Desarrollo de Interface - 15 de enero de 2026</p>
       <script src="app.js"></script>
     </footer>
   </body>

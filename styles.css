@@ -1,10 +1,13 @@
 body{
+    background-image: url(imagen.png);
     background-color: orange;
     display: grid;
     grid-template-rows: auto 1fr auto;
     margin: 0;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+    min-height: 100vh;
 }
+
 
 h1{
     color: white;
@@ -15,14 +18,20 @@ main{
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 80vh;
+    padding: 10px;
 }
-.container{
+.container, #datosPrevisualizados{
     margin: 20px;
     padding: 20px;
-    width: 70%;
+    width: 90%;
+    
+    max-width: 700px;
+    min-width: 0;
+
     background-color: white;
     border-radius: 10px;
+
+    box-sizing: border-box;
 }
 
 form{
@@ -36,6 +45,7 @@ input, textarea, select{
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 16px;
+    box-sizing: border-box;
 }
 
 small{
@@ -67,16 +77,27 @@ label{
     margin-bottom: 10px;
 }
 
-
 footer{
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     text-align: center;
-    padding: 10px;
+    padding: 15px;
     margin: 0;
     background-color: #333;
     color: white;
 }
+footer > h4 {
+    font-size: 15px;
+    padding-bottom: 5px;
+    margin: 0;
+}
+footer > p{
+    font-size: 13px !important;
+    padding: 0px;
+    margin: 0;
+}
 
 button{
+    height: 40px;
     padding: 10px 15px;
     margin: 10px;
     background-color: orange;
@@ -89,6 +110,23 @@ button{
 }
 
 button:hover{
-    background-color: darkorange;
+    background-color: rgb(244, 114, 28);
     transition: 500ms;
+}
+
+#divBotones{
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
+}
+
+#enviar{
+    grid-column: 1 / -1;
+}
+
+@media (max-width: 800px) {
+    main{
+        display: grid;
+        grid-template-columns: 1fr;
+    }
 }

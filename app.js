@@ -61,7 +61,7 @@ formulario.addEventListener("submit", (event) => {
     var listaInvalidos = validarTodos();
     if (listaInvalidos.length > 0) {
         event.preventDefault(); 
-        alert("No se puede enviar el formulario. Los siguientes campos son inválidos: \n - " + listaInvalidos.join("\n - "));
+        alert("No se puede enviar el formulario. Los siguientes campos son incorrectos o están vacíos: \n - " + listaInvalidos.join("\n - "));
     } else{
         const datosFormulario = {
             nombre: nombre.value,
@@ -218,7 +218,7 @@ function validarDni() {
     if (!regexDNI.test(dni.value)) {
         dni.style.borderColor = "red";
         msgDni.classList.replace("valido", "invalido"); 
-        msgDni.textContent = "El DNI no es válido";
+        msgDni.textContent = "El DNI no es válido. Deben ser 8 dígitos seguidos de una letra.";
         return false;
     } else {
         dni.style.borderColor = "green";
@@ -231,11 +231,12 @@ function validarDni() {
 }
 
 function validarTelefono() {
+    const regexTel = /^\d{9}$/;
     //Lógica para validar el teléfono
-    if (telefono.length != 9 && isNaN(telefono.value)) {
+    if (!regexTel.test(telefono.value) || isNaN(telefono.value)) {
         telefono.style.borderColor = "red";
         msgTelefono.classList.replace("valido", "invalido");
-        msgTelefono.textContent = "El teléfono es inválido";
+        msgTelefono.textContent = "El teléfono es inválido. Deben ser 9 dígitos";
         return false;   
     } else {
         telefono.style.borderColor = "green";
@@ -247,10 +248,12 @@ function validarTelefono() {
 
 function validarEmail() {
     //Lógica para validar el email
-    if (!email.value.includes("@") || !email.value.includes(".") || email.value.includes(" ") || email.value.indexOf("@") > email.value.lastIndexOf(".")) {
+    const regexEmail = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+    if (!regexEmail.test(email.value)) {
         email.style.borderColor = "red";
         msgEmail.classList.replace("valido", "invalido");
-        msgEmail.textContent = "El email es inválido";
+        msgEmail.textContent = "El email es inválido.";
         return false;
     } else {
         email.style.borderColor = "green";
@@ -273,6 +276,7 @@ function validarNumEntradas() {
         msgNumEntradas.textContent = "El número de entradas debe ser un número";
         return false;
     } else {
+        numEntradas.style.borderColor = "green";
         msgNumEntradas.textContent = "";
         return true;
     }
