@@ -121,7 +121,12 @@ function previsualizar(event) {
         bandera = false;
     } else {
         previsualizarBtn.textContent = "Previsualizar";
-        previsualizacionDiv.innerHTML = "";
+
+        var divExistente = document.getElementById("datosPrevisualizados");
+        if (divExistente) {
+            previsualizacionDiv.removeChild(divExistente);
+        }
+
         bandera = true;
     }
 
