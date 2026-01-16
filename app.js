@@ -8,6 +8,7 @@ var dni = document.getElementById("dni");
 var telefono = document.getElementById("telefono");
 var email = document.getElementById("email");
 var numEntradas = document.getElementById("numEntradas");
+var textoAdicional = document.getElementById("addAdicional");
 
 //input de numero
 var tipoEntrada = document.getElementById("tipoEntrada");
@@ -28,9 +29,11 @@ var btnEnviar = document.getElementById("enviar");
 var btnLimpiar = document.getElementById("limpiar");
 var btnRecuperarLS = document.getElementById("recuperarLS");
 var btnRecargar = document.getElementById("recargar");
+var btnAddAdicional = document.getElementById("btnaddAdicional");
 
 //elemento del DOM donde se mostrará la previsualización
 var previsualizacionDiv = document.getElementById("previsualizacion");
+var adicionalDiv = document.getElementById("divAdicionales");
 
 //mensajes de error
 var msgNombre = document.getElementById("msgNombre");
@@ -59,32 +62,66 @@ previsualizarBtn.addEventListener("click", previsualizar);
 
 formulario.addEventListener("submit", (event) => {
     var listaInvalidos = validarTodos();
-    if (listaInvalidos.length > 0) {
-        event.preventDefault(); 
-        alert("No se puede enviar el formulario. Los siguientes campos son incorrectos o están vacíos: \n - " + listaInvalidos.join("\n - "));
-    } else{
-        const datosFormulario = {
-            nombre: nombre.value,
-            apellido: apellido.value,
-            dni: dni.value,
-            telefono: telefono.value,
-            email: email.value,
-            entradas: numEntradas.value,
-            tipo: tipoEntrada.value,
-            adicionales: {
-                bebida: bebida.checked,
-                comida: comida.checked,
-                brazalete: brazalete.checked
-            },
-            comentario: comentario.value
-        };
 
-        localStorage.setItem("formulario", JSON.stringify(datosFormulario));
+    if (navigator.onLine) {
+        if (listaInvalidos.length > 0) {
+            event.preventDefault(); 
+            alert("No se puede enviar el formulario. Los siguientes campos son incorrectos o están vacíos: \n - " + listaInvalidos.join("\n - "));
+        } else{
+            const datosFormulario = {
+                nombre: nombre.value,
+                apellido: apellido.value,
+                dni: dni.value,
+                telefono: telefono.value,
+                email: email.value,
+                entradas: numEntradas.value,
+                tipo: tipoEntrada.value,
+                adicionales: {
+                    bebida: bebida.checked,
+                    comida: comida.checked,
+                    brazalete: brazalete.checked
+                },
+            comentario: comentario.value
+            };
+
+            localStorage.setItem("formulario", JSON.stringify(datosFormulario));
+            alert("Formulario enviado correctamente y datos guardados en localStorage.");
+        }
+    } else {
+        event.preventDefault();
+        alert("No hay conexión a Internet. No se puede enviar el formulario.");
     }
 });
 btnLimpiar.addEventListener("click", limpiarFormulario);
 btnRecuperarLS.addEventListener("click", recuperarDelLocalStorage);
 btnRecargar.addEventListener("click", recargarPagina);
+btnAddAdicional.addEventListener("click", addAdicional);
+
+function addAdicional() {
+    var nuevoAdicional = textoAdicional.value;
+    if (nuevoAdicional.trim() !== "") {
+
+        var divCamposJuntos = document.createElement("div");
+        divCamposJuntos.classList.add("camposJuntos");
+        adicionalDiv.appendChild(divCamposJuntos);
+
+        var checkbox = document.createElement("input");
+
+        checkbox.type = "checkbox";
+        checkbox.id = nuevoAdicional;
+        checkbox.name = nuevoAdicional;
+        checkbox.checked = true
+
+        var label = document.createElement("label");
+        label.htmlFor = nuevoAdicional;
+        label.textContent = nuevoAdicional;
+
+        divCamposJuntos.appendChild(checkbox);
+        divCamposJuntos.appendChild(label);
+
+        textoAdicional.value = "";
+    }
+}
 
 //Funciones de los botones
 function previsualizar(event) {
@@ -234,6 +271,7 @@ function validarDni() {
 
     /*La expresion regular y el metodo para validarla (.test) fueron implementados con ayuda de la IA */
 }
+
 
 function validarTelefono() {
     const regexTel = /^\d{9}$/;

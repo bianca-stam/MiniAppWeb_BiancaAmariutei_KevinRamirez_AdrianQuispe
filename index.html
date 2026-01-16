@@ -50,21 +50,31 @@
               </select>
               <small id="msgTipoEntrada" class="valido"></small>
 
-              <label for="adiciones">Adicionales:</label>
-              <div class="camposJuntos">
-                <input type="checkbox" id="bebida" name="bebida" />
-                <label for="bebida">Bebida</label>
+              <div id="divAdicionales">
+
+                <label for="adiciones">Adicionales:</label>
+                <div class="camposJuntos">
+                  <input type="checkbox" id="bebida" name="bebida" />
+                  <label for="bebida">Bebida</label>              
+                </div> 
+                  <div class="camposJuntos">
+                  <input type="checkbox" id="comida" name="comida" />
+                  <label for="comida">Comida</label>
+                </div>
+
+                <div class="camposJuntos">
+                  <input type="checkbox" id="brazalete" name="brazalete" />
+                  <label for="brazalete">Brazalete exclusivo</label>
+                </div>
               </div>
 
-              <div class="camposJuntos">
-                <input type="checkbox" id="comida" name="comida" />
-                <label for="comida">Comida</label>
+              <div class="adicionales">
+                <label for="addAdicional">Añadir un adicional:</label>
+                <input type="text" name="addAdicional" id="addAdicional">
+                
+                <button type="button" id="btnaddAdicional" name="btnaddAdicional">Añadir</button>
               </div>
-
-              <div class="camposJuntos">
-                <input type="checkbox" id="brazalete" name="brazalete" />
-                <label for="brazalete">Brazalete exclusivo</label>
-              </div>
+             
               <small id="msgAdicionales"></small>
 
               <label for="comentario">Comentario</label>
